@@ -4,6 +4,7 @@ import market.model.persistence.Category;
 import market.model.persistence.Product;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 public class CategoryDAO {
 
@@ -28,4 +29,18 @@ public class CategoryDAO {
         return this.entityManager.find(Category.class, id);
     }
 
+    public Category update(Category category) {
+        return convertToMerge(category);
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Category> listAll() {
+        String sql = "SELECT * FROM Category";
+        return this.entityManager.createNativeQuery(sql, Category.class)
+                .getResultList();
+    }
+
+    private Category convertToMerge(Category category) {
+        return this.entityManager.merge(category);
+    }
 }

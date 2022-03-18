@@ -26,13 +26,22 @@ public class Program {
                 , new BigDecimal("6.99")
                 , new Category("Alimento"));
 
+        Category category = new Category("Bebidas");
+
+//        categoryService.update(category, 10L);
 //        productService.create(product);
-//        productService.delete(6L);
-//        productService.delete(7L);
+
 //        Category category = categoryService.findByName("Alimentos");
 //        System.out.println(category);
 //        productService.update(product, 8L);
-        List<Product> products = productService.listByName("Cheetos");
-        products.forEach(System.out::println);
+
+//        List<Product> products = productService.listByName("Cheetos");
+//        products.forEach(System.out::println);
+
+        List<Category> categories = categoryService.listAll();
+        categories.forEach(System.out::println);
+
+        Category categoryById = categoryService.getById(8L);
+        System.out.println(categoryById);
     }
 }
