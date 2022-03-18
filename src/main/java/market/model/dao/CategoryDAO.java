@@ -20,4 +20,12 @@ public class CategoryDAO {
                 .getSingleResult();
     }
 
+    public void delete(Category category) {
+        entityManager.remove(category);
+    }
+
+    public Category getById(Long id) {
+        return this.entityManager.find(Category.class, id);
+    }
+
 }
