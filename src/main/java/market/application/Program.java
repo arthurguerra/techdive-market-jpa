@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
+import java.util.List;
 
 public class Program {
 
@@ -21,14 +22,17 @@ public class Program {
         ProductService productService = new ProductService(entityManager);
         CategoryService categoryService = new CategoryService(entityManager);
 
-        Product product = new Product("Teste", "Requeijão 180g"
-                , new BigDecimal(10.99)
-                , new Category("Criando classe a partir do produto"));
+        Product product = new Product("teste", "teste"
+                , new BigDecimal("2.99")
+                , new Category("teste"));
 
 //        productService.create(product);
 //        productService.delete(6L);
-        productService.delete(7L);
+//        productService.delete(7L);
 //        Category category = categoryService.findByName("Alimentos");
 //        System.out.println(category);
+//        productService.update(product, 8L);
+        List<Product> products = productService.listAll();
+        products.forEach(System.out::println);
     }
 }
