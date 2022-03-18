@@ -22,9 +22,9 @@ public class Program {
         ProductService productService = new ProductService(entityManager);
         CategoryService categoryService = new CategoryService(entityManager);
 
-        Product product = new Product("teste", "teste"
-                , new BigDecimal("2.99")
-                , new Category("teste"));
+        Product product = new Product("Cheetos", "Cheddar 90g"
+                , new BigDecimal("6.99")
+                , new Category("Alimento"));
 
 //        productService.create(product);
 //        productService.delete(6L);
@@ -32,7 +32,7 @@ public class Program {
 //        Category category = categoryService.findByName("Alimentos");
 //        System.out.println(category);
 //        productService.update(product, 8L);
-        List<Product> products = productService.listAll();
+        List<Product> products = productService.listByName("Cheetos");
         products.forEach(System.out::println);
     }
 }
