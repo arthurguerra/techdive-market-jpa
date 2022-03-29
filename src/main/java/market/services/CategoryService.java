@@ -13,7 +13,7 @@ import java.util.List;
 
 public class CategoryService {
 
-    private final Logger LOG = LogManager.getLogger(ProductService.class);
+    private final Logger LOG = LogManager.getLogger(CategoryService.class);
 
     private EntityManager entityManager;
 

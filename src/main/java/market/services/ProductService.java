@@ -41,7 +41,6 @@ public class ProductService {
             this.LOG.info("Categoria '" + categoryName + "' encontrada no banco!");
             product.setCategory(category);
         }
-
         try {
             getBeginTransaction();
             this.productDAO.create(product);
@@ -74,19 +73,14 @@ public class ProductService {
             this.LOG.error("Um dos parâmetros está nulo!");
             throw new RuntimeException("The parameter is null!");
         }
-
         Product product = this.productDAO.getById(productId);
-
         validateProductIsNull(product);
         this.LOG.info("Produto encontrado no banco");
-
         getBeginTransaction();
-
         product.setName(newProduct.getName());
         product.setDescription(newProduct.getDescription());
         product.setPrice(newProduct.getPrice());
         product.setCategory(this.categoryService.findByName(newProduct.getCategory().getName()));
-
         commitAndCloseTransaction();
         this.LOG.info("Produto atualizado com sucesso!");
     }
@@ -101,6 +95,17 @@ public class ProductService {
         }
         this.LOG.info("Foram encontrados "+ products.size() + " Produtos.");
         return products;
+    }
+
+    public Product getById(Long id) {
+        if (id == null) {
+            this.LOG.error("O ID está nulo!");
+            throw new RuntimeException("ID is null!");
+        }
+        Product product = this.productDAO.getById(id);
+        validateProductIsNull(product);
+        this.LOG.info("Produto "+product.getName()+" encontrado com sucesso");
+        return product;
     }
 
     public List<Product> listByName(String name) {

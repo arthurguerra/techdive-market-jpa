@@ -22,26 +22,10 @@ public class Program {
         ProductService productService = new ProductService(entityManager);
         CategoryService categoryService = new CategoryService(entityManager);
 
-        Product product = new Product("Cheetos", "Cheddar 90g"
-                , new BigDecimal("6.99")
-                , new Category("Alimento"));
+        Product product = new Product("TESTANDO", "TESTANDO TERCEIRA TABELA"
+                , new BigDecimal("0")
+                , new Category("TESTANDO TERCEIRA TABELA"));
+        productService.create(product);
 
-        Category category = new Category("Bebidas");
-
-//        categoryService.update(category, 10L);
-//        productService.create(product);
-
-//        Category category = categoryService.findByName("Alimentos");
-//        System.out.println(category);
-//        productService.update(product, 8L);
-
-//        List<Product> products = productService.listByName("Cheetos");
-//        products.forEach(System.out::println);
-
-        List<Category> categories = categoryService.listAll();
-        categories.forEach(System.out::println);
-
-        Category categoryById = categoryService.getById(8L);
-        System.out.println(categoryById);
     }
 }

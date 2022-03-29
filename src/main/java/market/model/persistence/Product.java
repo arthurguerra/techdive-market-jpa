@@ -2,6 +2,7 @@ package market.model.persistence;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Set;
 
 @Entity
 public class Product {
@@ -23,12 +24,16 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
+    @ManyToMany
+            (mappedBy = "products")
+    private Set<Client> clients;
+
     public Product() {
     }
 
     public Product(String name, String description, BigDecimal price, Category category) {
-        this.name = name;
-        this.description = description;
+        this.name = name.toLowerCase();
+        this.description = description.toLowerCase();
         this.price = price;
         this.category = category;
     }
