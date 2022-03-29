@@ -34,9 +34,9 @@ public class ClientDAO {
 
     @SuppressWarnings("unchecked")
     public List<Client> listByName(String name) {
-        String sql = "SELECT * from Client WHERE name=:name";
+        String sql = "SELECT * from Client WHERE LOWER(name)=:name";
         return this.entityManager.createNativeQuery(sql, Client.class)
-                .setParameter("name", name)
+                .setParameter("name", name.toLowerCase())
                 .getResultList();
     }
 }
